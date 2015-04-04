@@ -1,0 +1,79 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<groupId>com.github.hayataka</groupId>
+	<artifactId>parentPom</artifactId>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+
+	<name>parentPom</name>
+	<url>https://github.com/hayataka/</url>
+
+	<!-- 依存性、各種設定だけを管理するpom -->
+	<!-- modulesでの読み込みはしないので、子pom側からの利用のみで主に用いる -->
+
+	<!-- <groupId>org.apache.maven.plugins</groupId> については、Eclipseのアウトラインで見た時に省略していた方が見やすいので記述を省略する。 -->
+
+	<properties>
+		<!-- ソースの読み込みはUTF−8に固定 -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<version.java.compiler>1.7</version.java.compiler>
+	</properties>
+
+	<build>
+		<plugins>
+			<plugin>
+				<!-- javaのバージョンは1.7 -->
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<source>${version.java.compiler}</source>
+					<target>${version.java.compiler}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<!-- sources.jarを mvn install時に作成する -->
+				<artifactId>maven-source-plugin</artifactId>
+				<version>2.4</version>
+
+				<executions>
+					<execution>
+						<phase>package</phase>
+						<goals>
+							<goal>jar</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
+			<plugin>
+				<artifactId>maven-javadoc-plugin</artifactId>
+				<version>2.10.2</version>
+
+				<configuration>
+					<!-- javadocに含める物、jaadocを出力する時の設定 -->
+					<author>true</author>
+					<source>${version.java.compiler}</source>
+					<show>protected</show>
+					<encoding>${project.build.sourceEncoding}</encoding>
+					<charset>${project.build.sourceEncoding}</charset>
+					<docencoding>${project.build.sourceEncoding}</docencoding>
+				</configuration>
+			</plugin>
+
+		</plugins>
+
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>junit</groupId>
+				<artifactId>junit</artifactId>
+				<version>4.11</version>
+			</dependency>
+
+		</dependencies>
+
+	</dependencyManagement>
+</project>
