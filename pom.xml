@@ -67,6 +67,8 @@
 
 	<dependencyManagement>
 		<dependencies>
+
+			<!-- junit系 -->
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -80,19 +82,34 @@
 			</dependency>
 
 
+			<!-- hibernate-validator固有 -->
 			<dependency>
 				<!-- validation実装 -->
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
-				<version>4.1.0.Final</version>
+				<version>5.1.3.Final</version>
 			</dependency>
 
+			<dependency>
+				<groupId>javax.el</groupId>
+				<artifactId>javax.el-api</artifactId>
+				<version>2.2.4</version>
+			</dependency>
+			<dependency>
+				<groupId>org.glassfish.web</groupId>
+				<artifactId>javax.el</artifactId>
+				<version>2.2.4</version>
+			</dependency>
+
+
+			<!-- log系 -->
 			<dependency>
 				<!-- log API -->
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
-				<version>1.6.1</version>
+				<version>1.7.12</version>
 			</dependency>
+
 			<dependency>
 				<!-- log 実装 -->
 				<groupId>org.slf4j</groupId>
